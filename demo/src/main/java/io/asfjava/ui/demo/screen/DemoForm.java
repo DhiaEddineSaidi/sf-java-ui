@@ -6,6 +6,8 @@ import io.asfjava.ui.core.form.ComboBox;
 import io.asfjava.ui.core.form.RadioBox;
 import io.asfjava.ui.core.form.TextArea;
 import io.asfjava.ui.core.form.TextField;
+import io.asfjava.ui.core.form.Password;
+import io.asfjava.ui.core.form.Number;
 
 public class DemoForm implements Serializable {
 
@@ -14,7 +16,17 @@ public class DemoForm implements Serializable {
 
 	@TextField(title = "Last Name", placeHolder = "Your last name")
 	private String lastName;
-
+	
+	@TextField(title = "eMail",placeHolder = "Your email", pattern ="^\\S+@\\S+$", validationMessage="Your mail must be in this format jhondoe@example.com", description="This is Text Field with pattern and validation message"
+)
+	private String email;
+	
+	@Number(title = "Number of children", placeHolder = "Number of children", description = "This is a number")
+	private Integer number;
+	
+	@Password(title = "Password", placeHolder = "Please set you password", description = "This is password")
+	private String password;
+	
 	@ComboBox(title = "Gender", values = { "Male", "Female" })
 	private String gender;
 	
@@ -24,6 +36,8 @@ public class DemoForm implements Serializable {
 
 	@TextArea(title = "Address", placeHolder = "Fill your address please", description = "This is textarea")
 	private String address;
+	
+
 
 	public String getFirstName() {
 		return firstName;
@@ -37,10 +51,33 @@ public class DemoForm implements Serializable {
 		return lastName;
 	}
 
+	public void setEmail(String eMail) {
+		this.email = eMail;
+	}
+
+	public String getEmail() {
+		return email;
+	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getGender() {
 		return gender;
 	}

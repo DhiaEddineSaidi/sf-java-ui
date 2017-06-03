@@ -9,8 +9,10 @@ import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.module.jsonSchema.types.StringSchema;
 
 import io.asfjava.ui.core.form.ComboBox;
+import io.asfjava.ui.core.form.Password;
 import io.asfjava.ui.core.form.TextArea;
 import io.asfjava.ui.core.form.TextField;
+import io.asfjava.ui.core.form.Number;
 
 class CustomStringSchema extends StringSchema {
 	@JsonProperty
@@ -23,6 +25,7 @@ class CustomStringSchema extends StringSchema {
 		if (annotation != null) {
 			// this.setLayout(annotation.value().toString());
 			this.setTitle(annotation.title());
+			this.setPattern(annotation.pattern());
 		}
 		ComboBox Comboannotation = beanProperty.getAnnotation(ComboBox.class);
 		if (Comboannotation != null) {
@@ -33,6 +36,14 @@ class CustomStringSchema extends StringSchema {
 		TextArea textArea = beanProperty.getAnnotation(TextArea.class);
 		if (textArea != null) {
 			this.setTitle(textArea.title());
+		}
+		Password password = beanProperty.getAnnotation(Password.class);
+		if (password != null) {
+			this.setTitle(password.title());
+		}
+		Number number = beanProperty.getAnnotation(Number.class);
+		if (number != null) {
+			this.setTitle(number.title());
 		}
 	}
 

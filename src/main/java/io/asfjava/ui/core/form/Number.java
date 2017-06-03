@@ -8,14 +8,12 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(FIELD)
-public @interface TextField {
+public @interface Number {
 	String title();
 
 	String placeHolder() default "";
 
 	String description() default "";
-	
-	String pattern() default "";
 
 	boolean noTitle() default false;
 
